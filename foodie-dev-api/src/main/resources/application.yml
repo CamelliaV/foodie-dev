@@ -1,22 +1,33 @@
 spring:
   datasource:
-    type: com.zaxxer.hikari.HikariDataSource
+#    type: com.zaxxer.hikari.HikariDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/foodie?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
-    hikari:
-      connection-timeout: 30000
-      minimum-idle: 5
-      maximum-pool-size: 20
-      auto-commit: true
-      idle-timeout: 600000
-      pool-name: DataSourceHikariCP
-      max-lifetime: 1800000
-      connection-test-query: SELECT 1
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      filters: stat,log4j2
+      validation-query: SELECT 1
+      web-stat-filter.enabled: true
+
+
+#    hikari:
+#      connection-timeout: 30000
+#      minimum-idle: 5
+#      maximum-pool-size: 20
+#      auto-commit: true
+#      idle-timeout: 600000
+#      pool-name: DataSourceHikariCP
+#      max-lifetime: 1800000
+#      connection-test-query: SELECT 1
 
 mybatis:
-  type-aliases-package: com.learn.pojo
+  type-aliases-package: com.learn.entity
   mapper-locations: classpath:mapper/*.xml
 
 server:
@@ -25,7 +36,6 @@ server:
     uri-encoding: UTF-8
   max-http-header-size: 80KB
 
-mapper:
-  mappers: com.learn.my.mapper.MyMapper
-  not-empty: false
-  identity: MYSQL
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

@@ -1,7 +1,16 @@
 package com.learn.mapper;
 
-import com.learn.my.mapper.MyMapper;
-import com.learn.pojo.Category;
+import com.learn.entity.Category;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface CategoryMapper extends MyMapper<Category> {
+/**
+ * <p>
+ * 商品分类  Mapper 接口
+ * </p>
+ *
+ * @author CamelliaV
+ * @since 2024-08-04
+ */
+public interface CategoryMapper extends BaseMapper<Category> {
+
 }

@@ -1,7 +1,16 @@
 package com.learn.mapper;
 
-import com.learn.my.mapper.MyMapper;
-import com.learn.pojo.Users;
+import com.learn.entity.Users;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface UsersMapper extends MyMapper<Users> {
+/**
+ * <p>
+ * 用户表  Mapper 接口
+ * </p>
+ *
+ * @author CamelliaV
+ * @since 2024-08-04
+ */
+public interface UsersMapper extends BaseMapper<Users> {
+
 }

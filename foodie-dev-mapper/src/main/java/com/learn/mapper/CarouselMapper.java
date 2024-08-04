@@ -1,7 +1,16 @@
 package com.learn.mapper;
 
-import com.learn.my.mapper.MyMapper;
-import com.learn.pojo.Carousel;
+import com.learn.entity.Carousel;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface CarouselMapper extends MyMapper<Carousel> {
+/**
+ * <p>
+ * 轮播图  Mapper 接口
+ * </p>
+ *
+ * @author CamelliaV
+ * @since 2024-08-04
+ */
+public interface CarouselMapper extends BaseMapper<Carousel> {
+
 }
