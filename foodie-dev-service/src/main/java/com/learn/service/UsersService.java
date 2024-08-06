@@ -2,6 +2,9 @@ package com.learn.service;
 
 import com.learn.entity.Users;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.learn.mapper.UsersMapper;
+import com.learn.vo.UserVo;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * <p>
@@ -13,4 +16,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface UsersService extends IService<Users> {
 
+    boolean queryUsernameIsExist(String username);
+
+    Users createUser(UserVo userVo);
 }
