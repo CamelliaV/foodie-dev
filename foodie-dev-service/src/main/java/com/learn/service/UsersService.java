@@ -1,10 +1,8 @@
 package com.learn.service;
 
-import com.learn.entity.Users;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.learn.mapper.UsersMapper;
-import com.learn.vo.UserVo;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.learn.entity.Users;
+import com.learn.req.UserReq;
 
 /**
  * <p>
@@ -18,5 +16,7 @@ public interface UsersService extends IService<Users> {
 
     boolean queryUsernameIsExist(String username);
 
-    Users createUser(UserVo userVo);
+    Users createUser(UserReq userReq);
+
+    Users queryUserForLogin(String username);
 }

@@ -1,9 +1,9 @@
-package com.learn.vo;
+package com.learn.req;
 
 import lombok.Data;
 
 @Data
-public class UserVo {
+public class UserReq {
     private String username;
     private String password;
     private String confirmPassword;
