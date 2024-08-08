@@ -1,7 +1,9 @@
 package com.learn.service;
 
-import com.learn.entity.Carousel;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.learn.entity.Carousel;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2024-08-04
  */
 public interface CarouselService extends IService<Carousel> {
-
+    List<Carousel> queryCarouselsOnShow();
 }

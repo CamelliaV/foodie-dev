@@ -1,10 +1,15 @@
 package com.learn.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.learn.entity.Carousel;
+import com.learn.enums.CarouselState;
 import com.learn.mapper.CarouselMapper;
 import com.learn.service.CarouselService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,4 +22,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class CarouselServiceImpl extends ServiceImpl<CarouselMapper, Carousel> implements CarouselService {
 
+    @Autowired
+    private CarouselMapper carouselMapper;
+
+    @Override
+    public List<Carousel> queryCarouselsOnShow() {
+        return carouselMapper.selectList(new QueryWrapper<Carousel>().eq("is_show", CarouselState.YES.value));
+    }
 }

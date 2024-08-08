@@ -4,23 +4,23 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
- * 商品分类 
+ * 商品分类
  * </p>
  *
  * @author CamelliaV
  * @since 2024-08-04
  */
-@Getter
-@Setter
+@Data
 @Accessors(chain = true)
 @TableName("category")
 @ApiModel(value = "Category对象", description = "商品分类 ")
@@ -59,4 +59,7 @@ public class Category implements Serializable {
     @ApiModelProperty(value = "背景颜色")
     @TableField("bg_color")
     private String bgColor;
+
+    @TableField(exist = false)
+    private List<Category> children;
 }

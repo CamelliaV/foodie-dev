@@ -1,12 +1,12 @@
 package com.learn.controller;
 
-import org.springframework.web.bind.annotation.*;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.learn.entity.Category;
+import com.learn.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import com.learn.service.CategoryService;
-import com.learn.entity.Category;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -58,4 +58,5 @@ public class CategoryController {
         categoryService.updateById(params);
         return new ResponseEntity<>("updated successfully", HttpStatus.OK);
     }
+
 }
