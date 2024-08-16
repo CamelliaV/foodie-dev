@@ -1,7 +1,10 @@
 package com.learn.mapper;
 
-import com.learn.entity.Category;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.learn.entity.Category;
+import com.learn.resp.RecItemsResp;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +15,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2024-08-04
  */
 public interface CategoryMapper extends BaseMapper<Category> {
-
+    List<RecItemsResp> queryRecItems(Integer categoryId);
 }

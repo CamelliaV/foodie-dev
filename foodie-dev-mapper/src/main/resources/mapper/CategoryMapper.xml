@@ -19,4 +19,39 @@
         id, name, type, father_id, logo, slogan, cat_image, bg_color
     </sql>
 
+    <resultMap id="RecItemRespResultMap"
+               type="com.learn.resp.RecItemsResp">
+        <result column="category_id" property="categoryId"/>
+        <result column="category_name" property="categoryName"/>
+        <result column="slogan" property="slogan"/>
+        <result column="category_image" property="categoryImage"/>
+        <result column="background_color" property="backgroundColor"/>
+        <collection property="itemList" ofType="com.learn.resp.ItemResp">
+            <result column="item_id" property="itemId"/>
+            <result column="item_name" property="itemName"/>
+            <result column="item_url" property="itemUrl"/>
+        </collection>
+    </resultMap>
+
+    <select id="queryRecItems" resultMap="RecItemRespResultMap"
+            parameterType="Integer">
+        SELECT c.id        AS category_id,
+               c.name      AS category_name,
+               c.slogan    AS slogan,
+               c.cat_image AS category_image,
+               c.bg_color  AS background_color,
+               i.id        AS item_id,
+               i.item_name AS item_name,
+               ii.url      AS item_url,
+               i.created_time
+        FROM foodie.category c
+                 LEFT JOIN foodie.items i ON c.id = i.root_cat_id
+                 LEFT JOIN foodie.items_img ii ON i.id = ii.item_id
+        WHERE c.type = 1
+          AND i.root_cat_id = #{categoryId}
+          AND ii.is_main = 1
+        ORDER BY i.created_time
+        LIMIT 0, 6
+    </select>
+
 </mapper>

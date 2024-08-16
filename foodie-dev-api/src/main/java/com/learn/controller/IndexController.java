@@ -60,4 +60,9 @@ public class IndexController {
     public Result queryTopCategories() {
         return Result.ok(categoryService.queryTopCategories());
     }
+
+    @GetMapping("/recItems/{categoryId}")
+    public Result queryRecItems(@PathVariable Integer categoryId) {
+        return Result.ok(categoryService.queryRecItems(categoryId));
+    }
 }

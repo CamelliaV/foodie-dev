@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.learn.entity.Category;
 import com.learn.enums.CategoryLevel;
 import com.learn.mapper.CategoryMapper;
+import com.learn.resp.RecItemsResp;
 import com.learn.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,6 +47,11 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
 
         return categoryList.isEmpty() ? categoryList : categoryList.get(0)
                                                                    .getChildren();
+    }
+
+    @Override
+    public List<RecItemsResp> queryRecItems(Integer categoryId) {
+        return categoryMapper.queryRecItems(categoryId);
     }
 
     private List<Category> lsChildren(Category root, List<Category> all) {
